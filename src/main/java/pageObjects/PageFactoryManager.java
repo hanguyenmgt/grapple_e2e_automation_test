@@ -46,8 +46,16 @@ public class PageFactoryManager {
 	public static ContactPageObject openContactPage(WebDriver driver) {
 		return new ContactPageObject(driver);
 	}
-
+	
 	public static RegisterFacilityPageObject openRegisterFacilityPage(WebDriver driver) {
 		return new RegisterFacilityPageObject(driver);
+	}
+	
+	public static TermOfUsePageObject openTermOfUsePage(WebDriver driver) {
+		return new TermOfUsePageObject(driver);
+	}
+
+	public static ProfilePageObject openProfilePage(WebDriver driver) {
+		return new ProfilePageObject(driver);
 	}
 }

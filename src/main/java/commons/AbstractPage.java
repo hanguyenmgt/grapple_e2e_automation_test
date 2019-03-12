@@ -65,7 +65,7 @@ public class AbstractPage {
 		WebElement element = driver.findElement(By.xpath(locator));
 		element.click();
 	}
-
+	
 	public void sendkeyToElement(WebDriver driver, String locator, String inputValue, String... values) {
 		locator = String.format(locator, (Object[]) values);
 		WebElement element = driver.findElement(By.xpath(locator));

@@ -104,12 +104,22 @@ public class AbstractTest {
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		return driver;
 	}
-
+	
 	public int randomNumber() {
-
+		
 		Random random = new Random();
 		int number = random.nextInt(999999) + 1;
 		return number;
+	}
+
+	public String randomNumber(int length) {
+	    String number = "";
+	    String possible = "0123456789";
+	    for(int i = 0; i < length; i++) {
+	        number += possible.charAt((int) Math.floor(Math.random() * possible.length()));
+	    }	    
+	    
+	    return number;
 	}
 
 	private boolean checkPassed(boolean condition) {
@@ -201,9 +211,9 @@ public class AbstractTest {
 		driver.close();
 	}
 	
-	public void sleep (int munite) {
+	public void sleep (int second) {
 		try {
-			Thread.sleep(munite);
+			Thread.sleep(second*1000);
 		} catch (Exception e) {
 
 		}
