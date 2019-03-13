@@ -31,16 +31,16 @@ public class User_04_Login_Options_Page extends AbstractTest {
 	public void beforeClass(String browser, String url) {
 		driver = openMultiBrowsers(browser, url);
 		homePage = PageFactoryManager.openHomePage(driver);
-		loginOptionsPage = homePage.clickLoginButton(driver);
+		loginOptionsPage = homePage.openLoginOptionsPage(driver);
 	}
 	
 	@Test
 	public void TC_01_Verify_Login_Button_Works() {
-		loginPage = loginOptionsPage.openLoginPage();
+		loginPage = loginOptionsPage.clickLoginButton();
 		
 		verifyTrue(loginPage.isLoginPageDisplayed());
 		
-		loginOptionsPage = loginPage.clickLoginButton(driver);
+		loginOptionsPage = loginPage.openLoginOptionsPage(driver);
 	}
 	
 	@Test
@@ -49,7 +49,7 @@ public class User_04_Login_Options_Page extends AbstractTest {
 		
 		verifyTrue(registerPage.isRegisterPageDisplayed());
 		
-		loginOptionsPage = registerPage.clickLoginButton(driver);
+		loginOptionsPage = registerPage.openLoginOptionsPage(driver);
 	}
 	
 	@Test
@@ -58,7 +58,7 @@ public class User_04_Login_Options_Page extends AbstractTest {
 		
 		verifyTrue(registerFacilityPage.isRegisterFacilityPageDisplayed());
 		
-		loginOptionsPage = registerFacilityPage.clickLoginButton(driver);
+		loginOptionsPage = registerFacilityPage.openLoginOptionsPage(driver);
 	}
 	
 	@AfterClass

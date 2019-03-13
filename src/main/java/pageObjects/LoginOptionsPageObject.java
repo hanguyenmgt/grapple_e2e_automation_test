@@ -18,7 +18,7 @@ public class LoginOptionsPageObject extends AbstractPage {
 		return isControlDisplayed(driver, LoginOptionsPageUI.LOGIN_OPTIONS_PAGE_TITLE);
 	}	
 	
-	public LoginPageObject openLoginPage() {
+	public LoginPageObject clickLoginButton() {
 		waitForControlClickable(driver, LoginOptionsPageUI.LOGIN_BUTTON);
 		clickToElement(driver, LoginOptionsPageUI.LOGIN_BUTTON);
 		

@@ -6,4 +6,6 @@ public class AbstractPageUI {
 	public static final String LOGO = "//a[@title='Home']";	
 	public static final String DYNAMIC_PAGE_LINK = "//div[@class='jsx-3171601681']/a[text()='%s']";
 	public static final String DYNAMIC_TEXT_BOX = "//input[@name='%s']";
+	public static final String FAILED_VALIDATION_MESSAGE = "//span[text()='Failed validation.']";
+	public static final String SUCCESS_VALIDATION_MESSAGE = "//span[text()='Registration successful']";
 }

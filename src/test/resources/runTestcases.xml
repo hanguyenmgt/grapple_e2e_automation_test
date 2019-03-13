@@ -12,7 +12,7 @@
 	<test name="Run on Chrome">
 		<parameter name="browser" value="chrome" />
 		<classes>
- 			<class name="com.grapple.user.User_05_Register_Page" />
+ 			<class name="com.grapple.user.User_06_Login_Page" />
 		</classes>
 	</test>
 

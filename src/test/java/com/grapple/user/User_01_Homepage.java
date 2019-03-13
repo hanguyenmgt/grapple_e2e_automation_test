@@ -59,7 +59,7 @@ public class User_01_Homepage extends AbstractTest {
 
 	@Test
 	public void TC_03_Verify_User_Is_Able_To_Open_Login_Options_Page() {
-		loginOptionsPage = homePage.clickLoginButton(driver);
+		loginOptionsPage = homePage.openLoginOptionsPage(driver);
 		verifyTrue(loginOptionsPage.isLoginOptionsPageDisplayed());
 		homePage = loginOptionsPage.openHomePage(driver);
 	}

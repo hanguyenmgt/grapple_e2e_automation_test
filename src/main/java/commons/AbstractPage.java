@@ -65,7 +65,7 @@ public class AbstractPage {
 		WebElement element = driver.findElement(By.xpath(locator));
 		element.click();
 	}
-	
+
 	public void sendkeyToElement(WebDriver driver, String locator, String inputValue, String... values) {
 		locator = String.format(locator, (Object[]) values);
 		WebElement element = driver.findElement(By.xpath(locator));
@@ -86,7 +86,8 @@ public class AbstractPage {
 		select.selectByVisibleText(selectValue);
 	}
 
-	public void selectCustomDropdownList(WebDriver driver, String dropdown, String listitem, String valueitem) throws InterruptedException {
+	public void selectCustomDropdownList(WebDriver driver, String dropdown, String listitem, String valueitem)
+			throws InterruptedException {
 		WebElement element = driver.findElement(By.xpath(dropdown));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
 		driver.findElement(By.xpath(dropdown)).click();
@@ -194,7 +195,7 @@ public class AbstractPage {
 	public void switchWindowByID(WebDriver driver, String windowID) {
 		driver.switchTo().window(windowID);
 	}
-	
+
 	public void switchToWindowByTitle(WebDriver driver, String title) {
 		Set<String> allWindows = driver.getWindowHandles();
 		for (String runWindows : allWindows) {
@@ -329,7 +330,9 @@ public class AbstractPage {
 	public boolean checkAnyImageLoaded(WebDriver driver, String locator) {
 		WebElement image = driver.findElement(By.xpath(locator));
 		JavascriptExecutor js = (JavascriptExecutor) driver;
-		return (boolean) js.executeScript("return arguments[0].complete && typeof arguments[0].naturalWidth != \"undefined\" && arguments[0].naturalWidth > 0", image);
+		return (boolean) js.executeScript(
+				"return arguments[0].complete && typeof arguments[0].naturalWidth != \"undefined\" && arguments[0].naturalWidth > 0",
+				image);
 	}
 
 	public void waitForControlVisible(WebDriver driver, String locator, String... values) {
@@ -364,7 +367,7 @@ public class AbstractPage {
 		WebDriverWait wait = new WebDriverWait(driver, longTimeout);
 		wait.until(ExpectedConditions.alertIsPresent());
 	}
-	
+
 	public void openProductReviewPage(WebDriver driver) {
 		waitForControlVisible(driver, AbstractPageUI.LOGO);
 		clickToElement(driver, AbstractPageUI.LOGO);
@@ -376,16 +379,16 @@ public class AbstractPage {
 		return PageFactoryManager.openHomePage(driver);
 	}
 
-	public LoginOptionsPageObject clickLoginButton(WebDriver driver) {		
+	public LoginOptionsPageObject openLoginOptionsPage(WebDriver driver) {
 		waitForControlVisible(driver, AbstractPageUI.LOGIN_BUTTON);
 		clickToElement(driver, AbstractPageUI.LOGIN_BUTTON);
-		
+
 		return PageFactoryManager.openLoginOptionsPage(driver);
 	}
-	
+
 	public AbstractPage openDynamicPage(WebDriver driver, String pageName) {
 		waitForControlVisible(driver, AbstractPageUI.HAMBURGER_MENU);
-		clickToElement(driver, AbstractPageUI.HAMBURGER_MENU);		
+		clickToElement(driver, AbstractPageUI.HAMBURGER_MENU);
 		waitForControlVisible(driver, AbstractPageUI.DYNAMIC_PAGE_LINK, pageName);
 		clickToElement(driver, AbstractPageUI.DYNAMIC_PAGE_LINK, pageName);
 		switch (pageName) {
@@ -405,4 +408,19 @@ public class AbstractPage {
 			return PageFactoryManager.openHomePage(driver);
 		}
 	}
+
+	public void inputToDynamicTextbox(WebDriver driver, String inputValue, String fieldName) {
+		waitForControlVisible(driver, AbstractPageUI.DYNAMIC_TEXT_BOX, fieldName);
+		sendkeyToElement(driver, AbstractPageUI.DYNAMIC_TEXT_BOX, inputValue, fieldName);
 	}
+	
+	public boolean isFailedValidationMesageDisplayed(WebDriver driver) {
+		return isControlDisplayed(driver, AbstractPageUI.FAILED_VALIDATION_MESSAGE);
+	}
+	
+	public boolean isSuccessValidationMesageDisplayed(WebDriver driver) {
+		//return isControlDisplayed(driver, RegisterPageUI.SUCCESS_VALIDATION_MESSAGE);
+		waitForControlVisible(driver, AbstractPageUI.SUCCESS_VALIDATION_MESSAGE);
+		return true;
+	}
+}

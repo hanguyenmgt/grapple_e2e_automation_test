@@ -34,8 +34,8 @@ public class AbstractTest {
 	public WebDriver openMultiBrowsers(String browserName, String url) {
 
 		if (browserName.equals("chrome")) {
-			
-			WebDriverManager.chromedriver().setup();			
+			System.setProperty("webdriver.chrome.driver", workingDir + "\\src\\test\\resources\\drivers\\chromedriver.exe");
+			//WebDriverManager.chromedriver().setup();			
 			DesiredCapabilities cap = DesiredCapabilities.chrome();			
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("--incognito");
@@ -47,14 +47,15 @@ public class AbstractTest {
 			
 
 		} else if (browserName.equals("firefox")) {
-			
+
+			//System.setProperty("webdriver.gecko.driver", workingDir + "\\src\\test\\resources\\drivers\\geckodriver.exe");
 			WebDriverManager.firefoxdriver().setup();			
 			System.setProperty(FirefoxDriver.SystemProperty.DRIVER_USE_MARIONETTE,"True");
 			System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE, workingDir + "\\FirefoxLog.txt");
 			
 			FirefoxProfile profile = new FirefoxProfile();
 			DesiredCapabilities cap = DesiredCapabilities.firefox();
-			profile.setAcceptUntrustedCertificates(false);
+			profile.setAcceptUntrustedCertificates(true);
 			profile.setAssumeUntrustedCertificateIssuer(true);
 			profile.setPreference("browser.download.folderList", 2);
 			profile.setPreference("browser.helperApps.alwaysAsk.force", false);
