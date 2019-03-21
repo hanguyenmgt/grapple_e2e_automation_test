@@ -3,7 +3,6 @@ package pageObjects;
 import org.openqa.selenium.WebDriver;
 
 import commons.AbstractPage;
-import pageUIs.AbstractPageUI;
 import pageUIs.RegisterPageUI;
 
 public class RegisterPageObject extends AbstractPage {
@@ -23,7 +22,7 @@ public class RegisterPageObject extends AbstractPage {
 	}
 	
 	public void selectTermCheckbox() {
-		//waitForControlVisible(driver, RegisterPageUI.TERM_CHECKBOX);
+		waitForControlVisible(driver, RegisterPageUI.TERM_CHECKBOX);
 		checkTheCheckbox(driver, RegisterPageUI.TERM_CHECKBOX);
 	}
 	

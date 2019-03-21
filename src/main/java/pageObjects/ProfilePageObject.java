@@ -22,9 +22,12 @@ public class ProfilePageObject extends AbstractPage {
 		return getTextElement(driver, ProfilePageUI.DYNAMIC_TABLE_ROW, value);
 	}
 	
-	public void clickSettingButton() {
+	public SettingPageObject clickSettingButton() {
 		waitForControlClickable(driver, ProfilePageUI.SETTING_BUTTON);
 		clickToElement(driver, ProfilePageUI.SETTING_BUTTON);
+		
+		return PageFactoryManager.openSettingPage(driver);
+				
 	}
 	
 	public void clickRegisterSellerButton() {

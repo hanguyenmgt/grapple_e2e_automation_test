@@ -17,6 +17,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import pageObjects.HomePageObject;
 import pageObjects.LoginOptionsPageObject;
+import pageObjects.LoginPageObject;
 import pageObjects.PageFactoryManager;
 import pageUIs.AbstractPageUI;
 
@@ -414,13 +415,31 @@ public class AbstractPage {
 		sendkeyToElement(driver, AbstractPageUI.DYNAMIC_TEXT_BOX, inputValue, fieldName);
 	}
 	
+	public String getTextDynamicTextBox(WebDriver driver,String attribute, String fieldName) {
+		waitForControlVisible(driver, AbstractPageUI.DYNAMIC_TEXT_BOX, fieldName);
+		return getAttributeValue(driver, AbstractPageUI.DYNAMIC_TEXT_BOX, attribute, fieldName);
+	}
+	
 	public boolean isFailedValidationMesageDisplayed(WebDriver driver) {
+		waitForControlVisible(driver, AbstractPageUI.FAILED_VALIDATION_MESSAGE);
 		return isControlDisplayed(driver, AbstractPageUI.FAILED_VALIDATION_MESSAGE);
 	}
 	
-	public boolean isSuccessValidationMesageDisplayed(WebDriver driver) {
-		//return isControlDisplayed(driver, RegisterPageUI.SUCCESS_VALIDATION_MESSAGE);
-		waitForControlVisible(driver, AbstractPageUI.SUCCESS_VALIDATION_MESSAGE);
-		return true;
+//	public boolean isSuccessValidationMesageDisplayed(WebDriver driver) {
+//		//return isControlDisplayed(driver, RegisterPageUI.SUCCESS_VALIDATION_MESSAGE);
+//		waitForControlVisible(driver, AbstractPageUI.SUCCESS_VALIDATION_MESSAGE);
+//		return true;
+//	}
+	
+	public void clickLogoutButton(WebDriver driver) {
+		waitForControlVisible(driver, AbstractPageUI.LOGOUT_BUTTON);
+		clickToElement(driver, AbstractPageUI.LOGOUT_BUTTON);
+	}
+	
+	public LoginPageObject clickConfirmLogoutButton(WebDriver driver) {
+		waitForControlVisible(driver, AbstractPageUI.CONFIRM_LOGOUT_BUTTON);
+		clickToElement(driver, AbstractPageUI.CONFIRM_LOGOUT_BUTTON);
+		
+		return PageFactoryManager.openLoginPage(driver);
 	}
 }

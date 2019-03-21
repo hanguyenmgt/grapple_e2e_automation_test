@@ -49,7 +49,6 @@ public class User_06_Login_Page extends AbstractTest {
 	@Test
 	public void TC_01_Verify_Apply_Now_Link_Works() {
 		
-		sleep(1);
 		registerOptionsPage = loginPage.clickApplyNowLink();
 		registerOptionsPage.isRegisterOptionsPageDisplayed();
 		
@@ -103,7 +102,7 @@ public class User_06_Login_Page extends AbstractTest {
 		loginPage.inputToDynamicTextbox(driver, incorrectPassword, "password");
 		loginPage.clickLoginButton();
 		
-		verifyTrue(loginPage.isFailedValidationMesageDisplayed(driver));		
+		verifyTrue(loginPage.isFailedValidationMesageDisplayed(driver));
 	}
 
 	@Test
