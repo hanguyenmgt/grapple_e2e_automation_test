@@ -11,4 +11,6 @@ public class AbstractPageUI {
 	public static final String FAILED_VALIDATION_MESSAGE = "//span[text()='Failed validation.']";
 	public static final String SUCCESS_VALIDATION_MESSAGE = "//span[text()='Registration successful']";
 	public static final String DYNAMIC_BUTTON = "//button[text()='%s']";
+	public static final String ARROW_DOWN_ICON = "//span[contains(@class,'menuTopBlock-icon')]";
+	public static final String SETTING_MENU = "//a[text()='Settings']";
 }

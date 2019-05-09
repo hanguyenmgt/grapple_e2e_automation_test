@@ -26,7 +26,7 @@ public class RegisterPageObject extends AbstractPage {
 		checkTheCheckbox(driver, RegisterPageUI.TERM_CHECKBOX);
 	}
 	
-	public ProfilePageObject clickRegisterButton() {
+	public RegisterSellerPageObject clickRegisterButton() {
 		waitForControlVisible(driver, RegisterPageUI.REGISTER_BUTTON);
 		clickToElement(driver, RegisterPageUI.REGISTER_BUTTON);
 		

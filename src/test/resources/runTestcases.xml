@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="Suite" parallel="tests" thread-count="1">
-	<parameter name="url" value="https://tester:fund@dev.grapple.fund" />
+	<parameter name="url" value="http://dev.grapple.fund" />
 
 	<listeners>
 		<listener class-name="org.uncommons.reportng.HTMLReporter" />
@@ -12,37 +12,25 @@
 	<test name="Run on Chrome">
 		<parameter name="browser" value="chrome" />
 		<classes>
- 			<class name="com.grapple.user.User_01_Homepage" />
- 			<class name="com.grapple.user.User_02_Pricing_Page" />
- 			<class name="com.grapple.user.User_03_Registor_Options_Page" />
- 			<class name="com.grapple.user.User_04_Login_Options_Page" />
- 			<class name="com.grapple.user.User_05_Register_Page" />
- 			<class name="com.grapple.user.User_06_Login_Page" />
- 			<class name="com.grapple.user.User_07_Setting_Page" />
+			<class name="com.grapple.user.User_01_Homepage" />
+			<class name="com.grapple.user.User_02_Pricing_Page" />
+			<class name="com.grapple.user.User_03_Registor_Options_Page" />
+			<class name="com.grapple.user.User_04_Login_Options_Page" />
+			<class name="com.grapple.user.User_05_Register_Page" />
+			<class name="com.grapple.user.User_06_Login_Page" />
+			<class name="com.grapple.user.User_07_Setting_Page" />
 		</classes>
 	</test>
 
-<!-- 	<test name="Run on Firefox">
-		<parameter name="browser" value="firefox" />
-		<classes>
-				<class name="com.bankguru.user.User_02_NewCustomer" />
-		</classes>
-	</test>
+	<!-- <test name="Run on Firefox"> <parameter name="browser" value="firefox" 
+		/> <classes> <class name="com.grapple.user.User_01_Homepage" /> </classes> 
+		</test> -->
 
-	<test name="Run on Chrome Headless">
-		<parameter name="browser" value="chromeheadless" />
-		<classes>
-				<class name="com.bankguru.user.User_02_NewCustomer" />
-		</classes>
-	</test>
-	
-	
-	<test name="Run on Firefox Headless">
-		<parameter name="browser" value="firefoxheadless" />
-		<classes>
-				<class name="com.bankguru.user.User_02_NewCustomer" />
-		</classes>
-	</test> -->
+	<!-- <test name="Run on Chrome Headless"> <parameter name="browser" value="chromeheadless" 
+		/> <classes> <class name="com.bankguru.user.User_02_NewCustomer" /> </classes> 
+		</test> <test name="Run on Firefox Headless"> <parameter name="browser" value="firefoxheadless" 
+		/> <classes> <class name="com.bankguru.user.User_02_NewCustomer" /> </classes> 
+		</test> -->
 
 
 </suite>

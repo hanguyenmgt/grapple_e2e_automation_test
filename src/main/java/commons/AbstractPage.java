@@ -196,7 +196,7 @@ public class AbstractPage {
 	public void switchWindowByID(WebDriver driver, String windowID) {
 		driver.switchTo().window(windowID);
 	}
-
+	
 	public void switchToWindowByTitle(WebDriver driver, String title) {
 		Set<String> allWindows = driver.getWindowHandles();
 		for (String runWindows : allWindows) {
@@ -207,6 +207,15 @@ public class AbstractPage {
 			}
 		}
 	}
+
+	public String getCurrentWindow(WebDriver driver) {		
+		return driver.getWindowHandle();
+	}
+	
+	public int getNumberOfActiveWindows(WebDriver driver) {
+		Set<String> allWindows = driver.getWindowHandles();		
+		return allWindows.size();
+		}
 
 	public boolean closeAllWithoutParentWindows(WebDriver driver, String parentWindow) {
 		Set<String> allWindows = driver.getWindowHandles();
@@ -370,27 +379,34 @@ public class AbstractPage {
 	}
 
 	public void openProductReviewPage(WebDriver driver) {
-		waitForControlVisible(driver, AbstractPageUI.LOGO);
+		waitForControlClickable(driver, AbstractPageUI.LOGO);
 		clickToElement(driver, AbstractPageUI.LOGO);
 	}
 
 	public HomePageObject openHomePage(WebDriver driver) {
-		waitForControlVisible(driver, AbstractPageUI.LOGO);
+		waitForControlClickable(driver, AbstractPageUI.LOGO);
 		clickToElement(driver, AbstractPageUI.LOGO);
 		return PageFactoryManager.openHomePage(driver);
 	}
 
 	public LoginOptionsPageObject openLoginOptionsPage(WebDriver driver) {
-		waitForControlVisible(driver, AbstractPageUI.LOGIN_BUTTON);
+		waitForControlClickable(driver, AbstractPageUI.LOGIN_BUTTON);
 		clickToElement(driver, AbstractPageUI.LOGIN_BUTTON);
 
 		return PageFactoryManager.openLoginOptionsPage(driver);
 	}
 
 	public AbstractPage openDynamicPage(WebDriver driver, String pageName) {
-		waitForControlVisible(driver, AbstractPageUI.HAMBURGER_MENU);
+		waitForControlClickable(driver, AbstractPageUI.HAMBURGER_MENU);
 		clickToElement(driver, AbstractPageUI.HAMBURGER_MENU);
-		waitForControlVisible(driver, AbstractPageUI.DYNAMIC_PAGE_LINK, pageName);
+		
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		waitForControlClickable(driver, AbstractPageUI.DYNAMIC_PAGE_LINK, pageName);
 		clickToElement(driver, AbstractPageUI.DYNAMIC_PAGE_LINK, pageName);
 		switch (pageName) {
 		case "FAQ":
@@ -431,13 +447,18 @@ public class AbstractPage {
 //		return true;
 //	}
 	
-	public void clickLogoutButton(WebDriver driver) {
-		waitForControlVisible(driver, AbstractPageUI.LOGOUT_BUTTON);
+	public void openProfileDropdownMenu(WebDriver driver) {
+		waitForControlClickable(driver, AbstractPageUI.ARROW_DOWN_ICON);
+		clickToElement(driver, AbstractPageUI.ARROW_DOWN_ICON);
+	}
+	
+	public void logout(WebDriver driver) {
+		waitForControlClickable(driver, AbstractPageUI.LOGOUT_BUTTON);
 		clickToElement(driver, AbstractPageUI.LOGOUT_BUTTON);
 	}
 	
 	public LoginPageObject clickConfirmLogoutButton(WebDriver driver) {
-		waitForControlVisible(driver, AbstractPageUI.CONFIRM_LOGOUT_BUTTON);
+		waitForControlClickable(driver, AbstractPageUI.CONFIRM_LOGOUT_BUTTON);
 		clickToElement(driver, AbstractPageUI.CONFIRM_LOGOUT_BUTTON);
 		
 		return PageFactoryManager.openLoginPage(driver);

@@ -66,10 +66,10 @@ public class User_01_Homepage extends AbstractTest {
 
 	@Test
 	public void TC_04_Verify_User_Is_Able_To_Open_Product_Preview_Page() {
+		String currentWindow = homePage.getCurrentWindow(driver);
 		homePage.clickProductReview();
-		homePage.switchToWindowByTitle(driver, "Grapple Reviews - ProductReview.com.au");
-		verifyEquals(homePage.getCurrentURL(driver), "https://www.productreview.com.au/listings/grapple");
-		homePage.switchToWindowByTitle(driver, "Grapple: Invoice Finance - Manage Business Cash Flow with Funding");
+		verifyEquals(homePage.getNumberOfActiveWindows(driver), 2);
+		homePage.closeAllWithoutParentWindows(driver, currentWindow);
 	}
 
 	@Test
@@ -109,6 +109,7 @@ public class User_01_Homepage extends AbstractTest {
 
 	@Test
 	public void TC_10_Verify_User_Is_Able_To_Open_FAQ_Page_When_Clicking_On_FAQ_Menu_Item() {
+		sleep(10);
 		faqPage = (FAQPageObject) homePage.openDynamicPage(driver, "FAQ");
 		verifyTrue(faqPage.isFAQPageDisplayed());
 		homePage = faqPage.openHomePage(driver);
@@ -146,6 +147,7 @@ public class User_01_Homepage extends AbstractTest {
 	public void TC_15_Verify_User_Is_Able_To_Open_Contact_Page_When_Clicking_On_Contact_Menu_Item() {
 		contactPage = (ContactPageObject) homePage.openDynamicPage(driver, "Contact");
 		verifyTrue(contactPage.isContactPageDisplayed());
+		sleep(3);
 		homePage = contactPage.openHomePage(driver);
 	}
 

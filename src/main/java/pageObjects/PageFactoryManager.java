@@ -55,8 +55,8 @@ public class PageFactoryManager {
 		return new TermOfUsePageObject(driver);
 	}
 	
-	public static ProfilePageObject openProfilePage(WebDriver driver) {
-		return new ProfilePageObject(driver);
+	public static RegisterSellerPageObject openProfilePage(WebDriver driver) {
+		return new RegisterSellerPageObject(driver);
 	}
 
 	public static SettingPageObject openSettingPage(WebDriver driver) {

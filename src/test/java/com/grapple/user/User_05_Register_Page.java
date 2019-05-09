@@ -11,7 +11,7 @@ import commons.AbstractTest;
 import pageObjects.FAQPageObject;
 import pageObjects.HomePageObject;
 import pageObjects.PageFactoryManager;
-import pageObjects.ProfilePageObject;
+import pageObjects.RegisterSellerPageObject;
 import pageObjects.RegisterPageObject;
 import pageObjects.TermOfUsePageObject;
 import testData.Register;
@@ -23,7 +23,7 @@ public class User_05_Register_Page extends AbstractTest {
 
 	private HomePageObject homePage;
 	private RegisterPageObject registerPage;
-	private ProfilePageObject profilePage;
+	private RegisterSellerPageObject registerSellerPage;
 	private FAQPageObject faqPage;
 	private TermOfUsePageObject termPage;
 
@@ -146,11 +146,9 @@ public class User_05_Register_Page extends AbstractTest {
 		registerPage.inputToDynamicTextbox(driver, email, "email");
 		registerPage.inputToDynamicTextbox(driver, phone, "phone");
 		registerPage.inputToDynamicTextbox(driver, password, "password");
-		profilePage = registerPage.clickRegisterButton();
+		registerSellerPage = registerPage.clickRegisterButton();
 		
-		verifyTrue(profilePage.isUserNameDisplayed(name));
-		verifyEquals(profilePage.getDynamicUserInfo("Email"), email);
-		verifyEquals(profilePage.getDynamicUserInfo("Phone"), phone);
+		verifyTrue(registerSellerPage.isRegisterSellerPageDisplayed());
 	}
 
 	@AfterClass

@@ -12,7 +12,7 @@ import pageObjects.HomePageObject;
 import pageObjects.LoginOptionsPageObject;
 import pageObjects.LoginPageObject;
 import pageObjects.PageFactoryManager;
-import pageObjects.ProfilePageObject;
+import pageObjects.RegisterSellerPageObject;
 import pageObjects.SettingPageObject;
 import testData.Login;
 
@@ -24,7 +24,7 @@ public class User_07_Setting_Page extends AbstractTest {
 	private HomePageObject homePage;
 	private LoginOptionsPageObject loginOptionsPage;
 	private LoginPageObject loginPage;
-	private ProfilePageObject profilePage;
+	private RegisterSellerPageObject registerSellerPage;
 	private SettingPageObject settingPage;
 
 	String email, password, phone, name, updatedEmail, updatedPassword, updatedName, updatedPhone;
@@ -42,8 +42,8 @@ public class User_07_Setting_Page extends AbstractTest {
 			
 		loginPage.inputToDynamicTextbox(driver, email, "email");
 		loginPage.inputToDynamicTextbox(driver, password, "password");
-		profilePage = loginPage.clickLoginButton();
-		settingPage = profilePage.clickSettingButton();
+		registerSellerPage = loginPage.clickLoginButton();
+		settingPage = registerSellerPage.clickSettingButton();
 		
 		email = settingPage.getTextDynamicTextBox(driver, "value", "email");
 		name = settingPage.getTextDynamicTextBox(driver, "value", "name");
@@ -91,13 +91,14 @@ public class User_07_Setting_Page extends AbstractTest {
 	
 	@Test
 	public void TC_05_Verify_User_Is_Able_To_Login_With_New_Email_And_Password() {
-		settingPage.clickLogoutButton(driver);
+		settingPage.openProfileDropdownMenu(driver);
+		settingPage.logout(driver);
 		loginPage = settingPage.clickConfirmLogoutButton(driver);
 		
 		loginPage.inputToDynamicTextbox(driver, updatedEmail, "email");
 		loginPage.inputToDynamicTextbox(driver, updatedPassword, "password");
-		profilePage = loginPage.clickLoginButton();
-		settingPage = profilePage.clickSettingButton();
+		registerSellerPage = loginPage.clickLoginButton();
+		settingPage = registerSellerPage.clickSettingButton();
 		
 		verifyEquals(settingPage.getTextDynamicTextBox(driver, "value", "email"), updatedEmail);
 		verifyEquals(settingPage.getTextDynamicTextBox(driver, "value", "name"), updatedName);

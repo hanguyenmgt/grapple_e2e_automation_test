@@ -13,7 +13,7 @@ import pageObjects.HomePageObject;
 import pageObjects.LoginOptionsPageObject;
 import pageObjects.LoginPageObject;
 import pageObjects.PageFactoryManager;
-import pageObjects.ProfilePageObject;
+import pageObjects.RegisterSellerPageObject;
 import pageObjects.RegisterOptionsPageObject;
 import testData.Login;
 
@@ -26,7 +26,7 @@ public class User_06_Login_Page extends AbstractTest {
 	private LoginOptionsPageObject loginOptionsPage;
 	private LoginPageObject loginPage;
 	private RegisterOptionsPageObject registerOptionsPage;
-	private ProfilePageObject profilePage;
+	private RegisterSellerPageObject registerSellerPage;
 	private ContactPageObject contactPage;
 
 	String email, password, incorrectEmail, incorrectPassword, name;
@@ -109,9 +109,9 @@ public class User_06_Login_Page extends AbstractTest {
 	public void TC_07_Verify_User_Can_Login_With_Correct_Email_And_Password() {
 		loginPage.inputToDynamicTextbox(driver, email, "email");
 		loginPage.inputToDynamicTextbox(driver, password, "password");
-		profilePage = loginPage.clickLoginButton();
+		registerSellerPage = loginPage.clickLoginButton();
 		
-		profilePage.isUserNameDisplayed(name);
+		verifyTrue(registerSellerPage.isRegisterSellerPageDisplayed());
 			
 	}
 

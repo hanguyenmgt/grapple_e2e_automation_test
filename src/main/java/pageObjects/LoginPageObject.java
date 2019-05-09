@@ -32,7 +32,7 @@ public class LoginPageObject extends AbstractPage {
 		return PageFactoryManager.openContactPage(driver);
 	}
 	
-	public ProfilePageObject clickLoginButton() {
+	public RegisterSellerPageObject clickLoginButton() {
 		waitForControlVisible(driver, LoginPageUI.LOGIN_BUTTON);
 		clickToElement(driver, LoginPageUI.LOGIN_BUTTON);
 		

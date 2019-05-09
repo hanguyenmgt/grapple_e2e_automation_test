@@ -36,29 +36,24 @@ public class User_04_Login_Options_Page extends AbstractTest {
 	
 	@Test
 	public void TC_01_Verify_Login_Button_Works() {
-		loginPage = loginOptionsPage.clickLoginButton();
-		
+		loginPage = loginOptionsPage.clickLoginButton();		
 		verifyTrue(loginPage.isLoginPageDisplayed());
-		
-		loginOptionsPage = loginPage.openLoginOptionsPage(driver);
+		homePage = loginPage.openHomePage(driver);
+		loginOptionsPage = homePage.openLoginOptionsPage(driver);
 	}
 	
 	@Test
 	public void TC_02_Verify_Apply_Selective_Link_Works() {
-		registerPage = loginOptionsPage.clickApplySelectiveLink();
-		
+		registerPage = loginOptionsPage.clickApplySelectiveLink();		
 		verifyTrue(registerPage.isRegisterPageDisplayed());
-		
-		loginOptionsPage = registerPage.openLoginOptionsPage(driver);
+		homePage = registerPage.openHomePage(driver);
+		loginOptionsPage = homePage.openLoginOptionsPage(driver);
 	}
 	
 	@Test
 	public void TC_03_Verify_Apply_Facility_Link_Works() {
-		registerFacilityPage = loginOptionsPage.clickApplyFacilityLink();
-		
+		registerFacilityPage = loginOptionsPage.clickApplyFacilityLink();		
 		verifyTrue(registerFacilityPage.isRegisterFacilityPageDisplayed());
-		
-		loginOptionsPage = registerFacilityPage.openLoginOptionsPage(driver);
 	}
 	
 	@AfterClass
