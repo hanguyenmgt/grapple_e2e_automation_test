@@ -109,7 +109,7 @@ public class User_01_Homepage extends AbstractTest {
 
 	@Test
 	public void TC_10_Verify_User_Is_Able_To_Open_FAQ_Page_When_Clicking_On_FAQ_Menu_Item() {
-		sleep(10);
+		//sleep(10);
 		faqPage = (FAQPageObject) homePage.openDynamicPage(driver, "FAQ");
 		verifyTrue(faqPage.isFAQPageDisplayed());
 		homePage = faqPage.openHomePage(driver);

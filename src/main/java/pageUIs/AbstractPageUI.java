@@ -13,4 +13,6 @@ public class AbstractPageUI {
 	public static final String DYNAMIC_BUTTON = "//button[text()='%s']";
 	public static final String ARROW_DOWN_ICON = "//span[contains(@class,'menuTopBlock-icon')]";
 	public static final String SETTING_MENU = "//a[text()='Settings']";
+	public static final String LOADING_BAR = "//div[contains(@class,'notAllowClick')]";
+	
 }

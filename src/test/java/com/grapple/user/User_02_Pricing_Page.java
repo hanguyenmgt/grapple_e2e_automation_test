@@ -50,12 +50,12 @@ public class User_02_Pricing_Page extends AbstractTest {
 	
 	@Test
 	public void TC_03_Verify_Platform_Costs_And_Daily_Costs_Are_Correct_With_Fund_Amount_Is_1000() {
-		pricingPage.inputToAmountTextbox("1000");
+		pricingPage.inputToAmountTextbox("2500");
 		pricingPage.clickOnQuoteButton();
 		
-		verifyEquals(pricingPage.getFundAmountText().trim(), "$1,000");
+		verifyEquals(pricingPage.getFundAmountText().trim(), "$2,500");
 		verifyEquals(pricingPage.getPlatformCostText().trim(), "$220");
-		verifyEquals(pricingPage.getDailyCostText().trim(), "$0.16");
+		verifyEquals(pricingPage.getDailyCostText().trim(), "$0.41");
 		
 		pricingPage.clickOnBackButton();
 	}

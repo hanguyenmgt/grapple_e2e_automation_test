@@ -386,13 +386,14 @@ public class AbstractPage {
 	public HomePageObject openHomePage(WebDriver driver) {
 		waitForControlClickable(driver, AbstractPageUI.LOGO);
 		clickToElement(driver, AbstractPageUI.LOGO);
+		waitForControlInVisible(driver, AbstractPageUI.LOADING_BAR);
 		return PageFactoryManager.openHomePage(driver);
 	}
 
 	public LoginOptionsPageObject openLoginOptionsPage(WebDriver driver) {
 		waitForControlClickable(driver, AbstractPageUI.LOGIN_BUTTON);
 		clickToElement(driver, AbstractPageUI.LOGIN_BUTTON);
-
+		waitForControlInVisible(driver, AbstractPageUI.LOADING_BAR);
 		return PageFactoryManager.openLoginOptionsPage(driver);
 	}
 
@@ -408,6 +409,7 @@ public class AbstractPage {
 		}
 		waitForControlClickable(driver, AbstractPageUI.DYNAMIC_PAGE_LINK, pageName);
 		clickToElement(driver, AbstractPageUI.DYNAMIC_PAGE_LINK, pageName);
+		waitForControlInVisible(driver, AbstractPageUI.LOADING_BAR);
 		switch (pageName) {
 		case "FAQ":
 			return PageFactoryManager.openFAQPage(driver);
@@ -460,7 +462,12 @@ public class AbstractPage {
 	public LoginPageObject clickConfirmLogoutButton(WebDriver driver) {
 		waitForControlClickable(driver, AbstractPageUI.CONFIRM_LOGOUT_BUTTON);
 		clickToElement(driver, AbstractPageUI.CONFIRM_LOGOUT_BUTTON);
+		waitForControlInVisible(driver, AbstractPageUI.LOADING_BAR);
 		
 		return PageFactoryManager.openLoginPage(driver);
+	}
+	
+	public void waitTilLoadingBarDisappear(WebDriver driver) {
+		waitForControlInVisible(driver, AbstractPageUI.LOADING_BAR);
 	}
 }

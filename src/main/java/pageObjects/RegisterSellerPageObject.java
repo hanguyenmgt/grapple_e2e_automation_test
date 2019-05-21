@@ -21,6 +21,7 @@ public class RegisterSellerPageObject extends AbstractPage {
 	public SettingPageObject clickSettingButton() {		
 		waitForControlClickable(driver, AbstractPageUI.SETTING_MENU);
 		clickToElement(driver,  AbstractPageUI.SETTING_MENU);
+		waitForControlInVisible(driver, AbstractPageUI.LOADING_BAR);
 		return PageFactoryManager.openSettingPage(driver);
 	}
 }

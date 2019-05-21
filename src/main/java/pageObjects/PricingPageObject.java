@@ -3,6 +3,7 @@ package pageObjects;
 import org.openqa.selenium.WebDriver;
 
 import commons.AbstractPage;
+import pageUIs.AbstractPageUI;
 import pageUIs.PricingPageUI;
 
 public class PricingPageObject extends AbstractPage {
@@ -21,14 +22,14 @@ public class PricingPageObject extends AbstractPage {
 	public RegisterPageObject clickRegisterLink() {
 		waitForControlClickable(driver, PricingPageUI.REGISTER_LINK);
 		clickToElement(driver, PricingPageUI.REGISTER_LINK);
-		
+		waitForControlInVisible(driver, AbstractPageUI.LOADING_BAR);
 		return PageFactoryManager.openRegisterPage(driver);		
 	}
 	
 	public ContactPageObject clickContactLink() {
 		waitForControlClickable(driver, PricingPageUI.CONTACT_LINK);
 		clickToElement(driver, PricingPageUI.CONTACT_LINK);
-		
+		waitForControlInVisible(driver, AbstractPageUI.LOADING_BAR);
 		return PageFactoryManager.openContactPage((driver));		
 	}
 	
